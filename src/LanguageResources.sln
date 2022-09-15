@@ -5,14 +5,16 @@ VisualStudioVersion = 17.4.32804.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageResources.WebApi", "LanguageResources.WebApi\LanguageResources.WebApi.csproj", "{4F3C38AB-1176-4AF6-AD4B-E6EB9DE74188}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageResources.Shared", "LanguageResources.Shared\LanguageResources.Shared.csproj", "{BEF96FD8-07EE-4E7B-901C-A428A7CF6F7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageResources.Shared", "LanguageResources.Shared\LanguageResources.Shared.csproj", "{BEF96FD8-07EE-4E7B-901C-A428A7CF6F7B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F6106187-0706-4CD9-A2D4-63CFDAEC6D28}"
 	ProjectSection(SolutionItems) = preProject
 		..\.editorconfig = ..\.editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageResources.Tests", "LanguageResources.Tests\LanguageResources.Tests.csproj", "{85CFFEC3-852B-45B3-B5DE-4253F9A72499}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageResources.Tests", "LanguageResources.Tests\LanguageResources.Tests.csproj", "{85CFFEC3-852B-45B3-B5DE-4253F9A72499}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageResources.Server", "LanguageResources.Server\LanguageResources.Server.csproj", "{9F32B72B-9C83-4E87-A899-50BEC0CEAD95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{85CFFEC3-852B-45B3-B5DE-4253F9A72499}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85CFFEC3-852B-45B3-B5DE-4253F9A72499}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85CFFEC3-852B-45B3-B5DE-4253F9A72499}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F32B72B-9C83-4E87-A899-50BEC0CEAD95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F32B72B-9C83-4E87-A899-50BEC0CEAD95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F32B72B-9C83-4E87-A899-50BEC0CEAD95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F32B72B-9C83-4E87-A899-50BEC0CEAD95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,64 @@
+﻿@page "/fetchdata"
+
+<PageTitle>Language Resources</PageTitle>
+
+@using LanguageResources.Server.Data
+@inject LanguageResourcesService LanguageResources
+@inject IHttpClientFactory ClientFactory
+
+<h1>Language Resources</h1>
+
+<p>This component demonstrates fetching Language Resources from a service.</p>
+
+@if (languageResources is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <p>
+        <label accesskey="l" for="LanguageSelect">Language:</label>
+        <select id="LanguageSelect" @onchange="SelectChanged">
+            <option value="en-GB" selected="selected">English - British</option>
+            <option value="fr-FR">French - French</option>
+            <option value="ar-DZ">Arabic - Algerian</option>
+        </select>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in languageResources)
+            {
+                <tr>
+                    <td>@item.Key</td>
+                    <td>@item.Value</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IDictionary<string, string>? languageResources;
+
+    protected override async Task OnInitializedAsync()
+    {
+        languageResources = await LanguageResources.GetLanguageResources("en-GB", ClientFactory);
+    }
+
+    private async Task SelectChanged(ChangeEventArgs e)
+    {
+        if (e.Value is null)
+        {
+            return;
+        }
+
+        string? language = e.Value.ToString();
+        languageResources = await LanguageResources.GetLanguageResources($"{language}", ClientFactory);
+    }
+}
