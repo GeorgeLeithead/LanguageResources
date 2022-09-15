@@ -5,6 +5,7 @@
 @using LanguageResources.Server.Data
 @inject LanguageResourcesService LanguageResources
 @inject IHttpClientFactory ClientFactory
+@inject IJSRuntime js
 
 <h1>Language Resources</h1>
 
@@ -29,6 +30,7 @@ else
             <tr>
                 <th>Key</th>
                 <th>Value</th>
+                <th>JavaScript</th>
             </tr>
         </thead>
         <tbody>
@@ -37,6 +39,7 @@ else
                 <tr>
                     <td>@item.Key</td>
                     <td>@item.Value</td>
+                    <td><a href="javascript:alert(@item.Key);">Alert</a></td>
                 </tr>
             }
         </tbody>
@@ -49,6 +52,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         languageResources = await LanguageResources.GetLanguageResources("en-GB", ClientFactory);
+        await EvalResourcesToJs();
     }
 
     private async Task SelectChanged(ChangeEventArgs e)
@@ -60,5 +64,19 @@ else
 
         string? language = e.Value.ToString();
         languageResources = await LanguageResources.GetLanguageResources($"{language}", ClientFactory);
+        await EvalResourcesToJs();
+    }
+
+    private async Task EvalResourcesToJs()
+    {
+        if (languageResources is null)
+        {
+            return;
+        }
+
+        foreach(var item in languageResources)
+        {
+            await js.InvokeVoidAsync("eval", $"var {item.Key}='{item.Value}';");
+        }
     }
 }
